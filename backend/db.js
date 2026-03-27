@@ -1,7 +1,12 @@
 const { Pool } = require('pg');
 
 // Uses environment variables for DB authentication (.env)
-const pool = new Pool();
+const pool = new Pool({
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false
+    }
+});
 
 // 🛠️ THE FIX: Auto-initialize the table on startup.
 // This guarantees the table exists in the exact database Node is connected to.
