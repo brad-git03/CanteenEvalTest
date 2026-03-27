@@ -6,7 +6,14 @@ const { keyPairFromSeed } = require('./eddsa');
 
 const app = express();
 app.use(cors({
-    origin: 'https://eval-test-canteen.vercel.app', // Your exact Vercel URL (No trailing slash!)
+    origin: function (origin, callback) {
+        // Allow exact production URL, any Vercel preview URL, or local development (no origin)
+        if (!origin || origin === 'https://eval-test-canteen.vercel.app' || origin.endsWith('.vercel.app') || origin.startsWith('http://localhost')) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     methods: ['GET', 'POST', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
