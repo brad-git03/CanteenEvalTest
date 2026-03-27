@@ -5,7 +5,11 @@ const routes = require('./routes');
 const { keyPairFromSeed } = require('./eddsa');
 
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: 'https://eval-test-canteen.vercel.app', // Your exact Vercel URL (No trailing slash!)
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(express.json());
 
 // Use a deterministic seed for EdDSA (from env)
