@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap');
+
+:root {
+  /* Swapped to UA Navy Blue & Gold */
+  --bg-dark-green: #0a1b3f; /* Deep Navy Blue */
+  --bg-darker-green: #050d21; /* Darker Navy for gradient */
+  --bg-cream: #fbfaf7; 
+  --accent-gold: #d4a017; /* UA Bright Gold */
+  --accent-gold-hover: #b58810;
+  
+  --card-bg: #ffffff;
+  --text-dark: #232323;
+  --text-muted: #737373;
+  --border-color: #eeebe3;
+  --input-bg: #f5f3ec;
+  --success: #278048;
+  --success-bg: #edf6f0;
+  --danger: #c93b3b;
+  --danger-bg: #fcf0f0;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-cream);
+  color: var(--text-dark);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .serif { font-family: 'Playfair Display', serif; }
+
+/* Landing Page Grid Background */
+.landing-bg {
+  min-height: 100vh;
+  background-color: var(--bg-dark-green);
+  background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  color: var(--bg-cream);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Common Components */
+.card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--border-color);
+}
+
+.btn-primary {
+  background-color: var(--accent-gold);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+.btn-primary:hover { background-color: var(--accent-gold-hover); }
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--text-dark);
+  border: 1px solid var(--border-color);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-secondary:hover { background-color: var(--border-color); }
+
+.btn-dark {
+  background-color: var(--bg-dark-green);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  width: 100%;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+/* Forms */
+input, select, textarea {
+  width: 100%;
+  padding: 12px 16px;
+  margin-top: 8px;
+  background-color: var(--input-bg);
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--text-dark);
+  transition: border 0.2s;
+}
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--accent-gold);
+  background-color: white;
+}
+label { font-size: 12px; font-weight: 600; color: #555; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-top: 20px;}
+
+/* Step Indicator */
+.step-indicator { display: flex; justify-content: center; align-items: center; gap: 15px; margin: 30px 0; }
+.step-circle { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 500; border: 2px solid var(--border-color); color: #999; }
+.step-circle.active { border-color: var(--accent-gold); color: var(--accent-gold); }
+.step-line { width: 40px; height: 2px; background-color: var(--border-color); }
+
+/* Status Badges */
+.badge { padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 500; }
+.badge-valid { background-color: #e6f4ea; color: var(--success); }
+.badge-invalid { background-color: #fce8e6; color: var(--danger); }
+.badge-checking { background-color: #fef7e0; color: #b08d00; }
